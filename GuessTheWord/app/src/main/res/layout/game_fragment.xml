@@ -110,5 +110,15 @@
             app:layout_constraintStart_toEndOf="@+id/skip_button"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+        <TextView
+            android:id="@+id/remain_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="00:00"
+            app:layout_constraintEnd_toEndOf="@+id/word_text"
+            app:layout_constraintStart_toStartOf="@+id/word_text"
+            app:layout_constraintTop_toBottomOf="@+id/word_text" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
