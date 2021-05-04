@@ -41,10 +41,6 @@ class GameFragment : Fragment() {
         // Data binding이 LiveData를 관찰하여 자동으로 업데이트하게 해줌
         binding.lifecycleOwner = this
 
-        viewModel.currentTime.observe(viewLifecycleOwner, { newTime ->
-            binding.remainTimeText.text = DateUtils.formatElapsedTime(newTime)
-        })
-
         viewModel.evenGameFinish.observe(viewLifecycleOwner, { isFinished ->
             if (isFinished) {
                 // viewModel.score.value 가 null 이면 0을 전달
