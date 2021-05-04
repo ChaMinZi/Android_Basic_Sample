@@ -35,21 +35,11 @@ class GameFragment : Fragment() {
         Log.i("GameFragment", "Called ViewModelProvider!")
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
-        binding.correctButton.setOnClickListener {
-            viewModel.onCorrect()
-        }
-        binding.skipButton.setOnClickListener {
-            viewModel.onSkip()
-        }
+        // Data Binding과 ViewModel 연결하기
+        binding.gameViewModel = viewModel
 
-        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
-            binding.scoreText.text = newScore.toString()
-        })
-
-        viewModel.word.observe(viewLifecycleOwner, { newWord ->
-            binding.wordText.text = newWord
-
-        })
+        // Data binding이 LiveData를 관찰하여 자동으로 업데이트하게 해줌
+        binding.lifecycleOwner = this
 
         viewModel.currentTime.observe(viewLifecycleOwner, { newTime ->
             binding.remainTimeText.text = DateUtils.formatElapsedTime(newTime)
@@ -68,16 +58,6 @@ class GameFragment : Fragment() {
         return binding.root
 
     }
-
-    /**
-     * Called when the game is finished
-     */
-//    fun gameFinished() {
-//        // viewModel.score.value 가 null 이면 0을 전달
-//        val currentScore = viewModel.score.value ?: 0
-//        val action = GameFragmentDirections.actionGameToScore(currentScore)
-//        findNavController(this).navigate(action)
-//    }
 
     /**
      * onSaveInstanceState 를 이용하는 것도 좋은 방법이지만
