@@ -19,14 +19,14 @@ Lifecycle 2.2.0
 
 ## Commit Version
 
-* [StartCode]( https://github.com/ChaMinZi/Android_Basic_Sample/tree/6338bab0f0e576cfd653c4f17d2dca1eb1599f7e )
+* [StartCode]( https://github.com/ChaMinZi/Android_Basic_Sample/tree/6338bab0f0e576cfd653c4f17d2dca1eb1599f7e/GuessTheWord )
 
-* [ViewModel과 LiveData 추가](https://github.com/ChaMinZi/Android_Basic_Sample/tree/7ced4aa373d22fa0b63986fce368e97a0900af4f)
+* [ViewModel과 LiveData 추가](https://github.com/ChaMinZi/Android_Basic_Sample/tree/7ced4aa373d22fa0b63986fce368e97a0900af4f/GuessTheWord)
 
-* [CountDownTimer 기능 추가와 ScoreFragment에 ViewModelFactory, ViewModel 추가](https://github.com/ChaMinZi/Android_Basic_Sample/tree/764f27a03f8f79b94dd4ba49f431df533a05f7e2)
+* [CountDownTimer 기능 추가와 ScoreFragment에 ViewModelFactory, ViewModel 추가](https://github.com/ChaMinZi/Android_Basic_Sample/tree/764f27a03f8f79b94dd4ba49f431df533a05f7e2/GuessTheWord)
 
-* [ViewModel에 DataBinding 추가하기와 DataBinding을 LiveData와 같이 사용하기](https://github.com/ChaMinZi/Android_Basic_Sample/tree/4e5b6a10bf4de7e4bf9df6816c3a506c7053c025)
+* [ViewModel에 DataBinding 추가하기와 DataBinding을 LiveData와 같이 사용하기](https://github.com/ChaMinZi/Android_Basic_Sample/tree/4e5b6a10bf4de7e4bf9df6816c3a506c7053c025/GuessTheWord)
 
-* [LiveData Map Transformation](https://github.com/ChaMinZi/Android_Basic_Sample/tree/f21eaff8052839cecc98f33d42784ef68723618b)
+* [LiveData Map Transformation](https://github.com/ChaMinZi/Android_Basic_Sample/tree/f21eaff8052839cecc98f33d42784ef68723618b/GuessTheWord)
 
-* [버튼 클릭에 진동 추가하기](https://github.com/ChaMinZi/Android_Basic_Sample/tree/0060ffd1d998e2b5e601872b4f68dac266a98ed0)
+* [버튼 클릭에 진동 추가하기](https://github.com/ChaMinZi/Android_Basic_Sample/tree/0060ffd1d998e2b5e601872b4f68dac266a98ed0/GuessTheWord)
