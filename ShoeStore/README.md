@@ -1,5 +1,15 @@
 # The Shoe Store
 
+### Dependencies
+
+```
+material: 1.3.0
+lifecycle-extensions: 2.2.0
+navigation-fragment-ktx: 2.3.5
+navigation-ui-ktx: 2.3.5
+```
+
+## Description
 This project will consist of five screens. You don't have to create a shoe store, you can use any other item as long as you create the following screens. You will be creating:
 
 1. Login screen: Email and password fields and labels plus create and login buttons
@@ -7,12 +17,6 @@ This project will consist of five screens. You don't have to create a shoe store
 3. Instructions onboarding screen
 4. Shoe Listing screen
 5. Shoe Detail screen for adding a new shoe
-
-## Getting Started
-
-Open the starter project in the latest stable version of Android Studio.
-
-Open the starter project in Android Studio
 
 ##Steps
 
