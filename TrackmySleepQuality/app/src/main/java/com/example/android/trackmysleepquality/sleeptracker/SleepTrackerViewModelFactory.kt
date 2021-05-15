@@ -25,6 +25,9 @@ import com.example.android.trackmysleepquality.database.SleepDatabaseDao
  * This is pretty much boiler plate code for a ViewModel Factory.
  *
  * Provides the SleepDatabaseDao and context to the ViewModel.
+ *
+ * Instead of having the ViewModel created dependency to the database,
+ * the ViewModelFactory provies this dependency to the ViewModel.
  */
 class SleepTrackerViewModelFactory(
         private val dataSource: SleepDatabaseDao,
