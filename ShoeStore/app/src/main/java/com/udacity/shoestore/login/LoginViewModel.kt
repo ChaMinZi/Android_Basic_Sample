@@ -22,10 +22,6 @@ class LoginViewModel : ViewModel() {
                 && Patterns.EMAIL_ADDRESS.matcher(email.value).matches())
     }
 
-    fun onLoginComplete() {
-        _isLoginEnabled.value = false
-    }
-
     override fun onCleared() {
         super.onCleared()
     }
