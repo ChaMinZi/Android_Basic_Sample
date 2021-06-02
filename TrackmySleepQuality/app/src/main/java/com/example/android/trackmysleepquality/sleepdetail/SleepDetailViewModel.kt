@@ -17,13 +17,9 @@ class SleepDetailViewModel(
         dataSource: SleepDatabaseDao) : ViewModel() {
 
     /**
-     * Hold a reference to SleepDatabase via its SleepDatabaseDao.
+     * SleepDatabase Dao를 통해 SleepDatabase에 대한 참조를 유지합니다.
      */
     val database = dataSource
-
-
-    /**
-     */
 
     private val night = MediatorLiveData<SleepNight>()
 
@@ -34,10 +30,7 @@ class SleepDetailViewModel(
     }
 
     /**
-     * Variable that tells the fragment whether it should navigate to [SleepTrackerFragment].
-     *
-     * This is `private` because we don't want to expose the ability to set [MutableLiveData] to
-     * the [Fragment]
+     * Variable that tells the fragment whether it should navigate to [SleepTrackerFragment]
      */
     private val _navigateToSleepTracker = MutableLiveData<Boolean?>()
 
