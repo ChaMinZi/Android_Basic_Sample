@@ -129,7 +129,6 @@ class TextViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun from(parent: ViewGroup): TextViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val view = layoutInflater.inflate(R.layout.header, parent, false)
-            view.setBackgroundColor(Color.LTGRAY)
             return TextViewHolder(view)
         }
     }
