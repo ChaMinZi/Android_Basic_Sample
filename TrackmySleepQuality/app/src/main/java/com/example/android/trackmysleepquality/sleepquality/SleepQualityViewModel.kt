@@ -26,8 +26,8 @@ class SleepQualityViewModel(
     }
 
     /**
-     * Sets the sleep quality and updates the database.
-     * Then navigates back to the SleepTrackerFragment.
+     * sleep quality를 설정하고 database를 업데이트하고
+     * SleepTrackerFragment 로 돌아감
      */
     fun onSetSleepQuality(quality: Int) {
         viewModelScope.launch {

@@ -19,28 +19,28 @@ class SleepTrackerViewModel(
         application: Application) : AndroidViewModel(application) {
 
     private val tonight = MutableLiveData<SleepNight?>()
-    private var nights = database.getAllNights()
+    var nights = database.getAllNights()
 
     val nightsString = Transformations.map(nights) { nights ->
         formatNights(nights, application.resources)
     }
 
     /**
-     * If tonight has not been set, then the START button should be visible.
+     * tonight 이 세팅되지 않으면, START button이 표시되어야 합니다.
      */
     val startButtonVisible = Transformations.map(tonight) {
         null == it
     }
 
     /**
-     * If tonight has been set, then the STOP button should be visible.
+     * tonight 이 세팅되어 있으면, STOP button이 표시되어야 합니다.
      */
     val stopButtonVisible = Transformations.map(tonight) {
         null != it
     }
 
     /**
-     * If there are any nights in the database, show the CLEAR button.
+     * database에 nights 데이터가 있으면, CLEAR button을 표시합니다.
      */
     val clearButtonVisible = Transformations.map(nights) {
         it?.isNotEmpty()
@@ -69,6 +69,18 @@ class SleepTrackerViewModel(
         _navigateToSleepQuality.value = null
     }
 
+    private val _navigateToSleepDataQuality = MutableLiveData<Long>()
+    val navigateToSleepDataQuality
+        get() = _navigateToSleepDataQuality
+
+    fun onSleepNightClicked(id: Long) {
+        _navigateToSleepDataQuality.value = id
+    }
+
+    fun onSleepDataQualityNavigated() {
+        _navigateToSleepDataQuality.value = null
+    }
+
     init {
         initializeTonight()
     }
@@ -79,13 +91,6 @@ class SleepTrackerViewModel(
         }
     }
 
-    /**
-     *  Handling the case of the stopped app or forgotten recording,
-     *  the start and end times will be the same.j
-     *
-     *  If the start time and end time are not the same, then we do not have an unfinished
-     *  recording.
-     */
     private suspend fun getTonightFromDatabase(): SleepNight? {
         var night = database.getTonight()
         if (night?.endTimeMilli != night?.startTimeMilli) {
