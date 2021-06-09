@@ -12,6 +12,28 @@
 
 * [Button States and SnackBar](https://github.com/ChaMinZi/Android_Basic_Sample/commit/e78bace470af6cebb5e5d8c94cbdde6426e8a136)
 
+* [Add a RecyclerView and Display SleepQuality Data](https://github.com/ChaMinZi/Android_Basic_Sample/commit/a6ca25919d428de0fe469101fe13ec2e3d33b947#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Display the SleepQuality List](https://github.com/ChaMinZi/Android_Basic_Sample/commit/6fcb8b61dae20add251ac41bbea89311fb3fa01b#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Refactor onCreateViewHolder](https://github.com/ChaMinZi/Android_Basic_Sample/commit/1b01f86c84475573ad32ac89f2efaf5e0655695a#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Refresh Data with DiffUtil](https://github.com/ChaMinZi/Android_Basic_Sample/commit/58c6ba6975d02561f070a543ae99291f0d388c5b#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Add DataBinding to the Adapter](https://github.com/ChaMinZi/Android_Basic_Sample/commit/98005c63a66442132a28d7a2973ba50f45cc6e48#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Adding Binding Adapters](https://github.com/ChaMinZi/Android_Basic_Sample/commit/74eac5b0e3b495af4d4519e0ba831a7805e050c4#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Change LinearLayout to GridLayout](https://github.com/ChaMinZi/Android_Basic_Sample/commit/85b2b5a3f37bd7a4d0cda68662508d6965987c21#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Implement a Click Listener with RecyclerView and DataBinding](https://github.com/ChaMinZi/Android_Basic_Sample/commit/7fcd74e08096c6fc833f97e76a4a4d2d19c280db#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Navigation on Click with Safe Args in RecyclerView](https://github.com/ChaMinZi/Android_Basic_Sample/commit/1ec3c45ab8527f0683b1c0a0bb32322e941bce81#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Add a List Header in RecyclerView](https://github.com/ChaMinZi/Android_Basic_Sample/commit/f9fcf6cf308ae5b7c78cd25dcb1705fbb1509ed5#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
+* [Improve Header](https://github.com/ChaMinZi/Android_Basic_Sample/commit/bee37f50e27945f70b77bd36e07e630a392d1a8a#diff-ab5b67b3005c7bf14ef427a3a8733c2b64f92abbcd563c983e28129c96a5281e)
+
 ## SleepQualityTracker
 수면에 대한 정보를 기록하는데 도움을 주는 토이 앱
 - 시작 시간 
@@ -36,22 +58,9 @@
 <img src="https://github.com/ChaMinZi/Android_Basic_Sample/blob/e78bace470af6cebb5e5d8c94cbdde6426e8a136/TrackmySleepQuality/screenshots/sleep_quality_tracker_stop.jpg" height="600px"></img>
 <img src="https://github.com/ChaMinZi/Android_Basic_Sample/blob/e78bace470af6cebb5e5d8c94cbdde6426e8a136/TrackmySleepQuality/screenshots/sleep_quality_tracker_clear.jpg" height="600px"></img>
 <img src="https://github.com/ChaMinZi/Android_Basic_Sample/blob/e78bace470af6cebb5e5d8c94cbdde6426e8a136/TrackmySleepQuality/screenshots/sleep_quality_tracker_quality.jpg" height="600px"></img>
-
+<img src="https://github.com/ChaMinZi/Android_Basic_Sample/blob/e78bace470af6cebb5e5d8c94cbdde6426e8a136/TrackmySleepQuality/screenshots/sleep_quality_tracker_header.png" height="600px"></img>
 -------------------------------------------
 
 ### 참고
-[Kotlin sleep tracker](https://github.com/udacity/andfun-kotlin-sleep-tracker)
-
-1. [Create Night Data Entity](https://github.com/udacity/andfun-kotlin-sleep-tracker/compare/Step.01-Exercise-Create-Night-Data-Entity...Step.01-Solution-Create-Night-Data-Entity)
-
-2. [Create SleepDatabaseDao](https://github.com/udacity/andfun-kotlin-sleep-tracker/compare/Step.02-Exercise-Create-SleepDatabaseDao...Step.02-Solution-Create-SleepDatabaseDao)
-
-3. [Create RoomDatabase](https://github.com/udacity/andfun-kotlin-sleep-tracker/compare/Step.03-Exercise-Create-RoomDatabase...Step.03-Solution-Create-RoomDatabase)
-
-4. [Add ViewModel](https://github.com/udacity/andfun-kotlin-sleep-tracker/compare/Step.04-Exercise-Add-ViewModel...Step.04-Solution-Add-ViewModel)
-
-5. [Coroutines](https://github.com/udacity/andfun-kotlin-sleep-tracker/compare/Step.05-Exercise-Coroutines...Step.05-Solution-Coroutines)
-
-6. [Record SleepQuality](https://github.com/udacity/andfun-kotlin-sleep-tracker/compare/Step.06-Exercise-Record-SleepQuality..Step.06-Solution-Record-SleepQuality)
-
-7. [Add Button State and SnackBar](https://github.com/udacity/andfun-kotlin-sleep-tracker/compare/Step.07-Exercise-Add-Button-States-and-SnackBar...Step.07-Solution-Add-Button-States-and-SnackBar)
+1. [Kotlin sleep tracker](https://github.com/udacity/andfun-kotlin-sleep-tracker)
+2. [Kotlin sleep tracker with RecyclerView](https://github.com/udacity/andfun-kotlin-sleep-tracker-with-recyclerview)
