@@ -1,16 +1,23 @@
 package com.example.android.marsrealestate.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 // 1. Base URL 설정
 private const val BASE_URL = "https://mars.udacity.com/"
 
+// 5. Moshi Builder와 KotlinJsonAdapterFactory를 사용하여 Moshi object를 생성하기
+private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
 // 2. Retorfit object 생성하기
 private val retrofit = Retrofit.Builder()
-        .addConverterFactory(ScalarsConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BASE_URL) // 서버 엔드포인트의 경로 웹 주소를 지정하기 위해
         .build()
 
@@ -21,7 +28,7 @@ private val retrofit = Retrofit.Builder()
  **/
 interface MarsApiService {
     @GET("realestate")
-    fun getProperties(): Call<String>
+    fun getProperties(): Call<List<MarsProperty>>
 }
 
 // 4. 공용 객체를 정의하여 Retrofit 서비스를 초기화
