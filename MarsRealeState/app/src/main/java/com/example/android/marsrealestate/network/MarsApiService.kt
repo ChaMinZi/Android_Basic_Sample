@@ -28,7 +28,7 @@ private val retrofit = Retrofit.Builder()
  **/
 interface MarsApiService {
     @GET("realestate")
-    fun getProperties(): Call<List<MarsProperty>>
+    suspend fun getProperties(): List<MarsProperty>
 }
 
 // 4. 공용 객체를 정의하여 Retrofit 서비스를 초기화
