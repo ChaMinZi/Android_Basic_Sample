@@ -6,9 +6,13 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 // 1. Base URL 설정
 private const val BASE_URL = "https://mars.udacity.com/"
+
+// 필터
+enum class MarsApiFilter(val value: String) { SHOW_RENT("rent"), SHOW_BUY("buy"), SHOW_ALL("all") }
 
 // 5. Moshi Builder와 KotlinJsonAdapterFactory를 사용하여 Moshi object를 생성하기
 private val moshi = Moshi.Builder()
@@ -27,8 +31,9 @@ private val retrofit = Retrofit.Builder()
  * 서버와 통신하는 모든 메서드를 인터페이스로 구현하는 객체를 생성
  **/
 interface MarsApiService {
+    // retrofit은 내가 선언한 enum을 모르기 때문에 String type으로 선언해야 함
     @GET("realestate")
-    suspend fun getProperties(): List<MarsProperty>
+    suspend fun getProperties(@Query("filter") type: String): List<MarsProperty>
 }
 
 // 4. 공용 객체를 정의하여 Retrofit 서비스를 초기화
