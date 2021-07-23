@@ -1,14 +1,13 @@
 package com.example.android.devbyteviewer.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface VideoDao {
     @Query("select * from databasevideo")
-    fun getVideos(): List<DatabaseVideo>
+    fun getVideos(): LiveData<List<DatabaseVideo>>
 
     /**
      * @[vararg] = variable arguments
@@ -22,4 +21,25 @@ interface VideoDao {
     **/
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg videos: DatabaseVideo)
+}
+
+@Database(entities = [DatabaseVideo::class], version = 1)
+abstract class VideosDatabase: RoomDatabase() {
+    abstract val videoDao: VideoDao
+}
+
+private lateinit var INSTANCE: VideosDatabase
+fun getDatabase(context: Context): VideosDatabase {
+    synchronized(VideosDatabase::class.java) {
+        // lateinit 변수가 이미 할당되었는지 여부를 확인하는 if문
+        if (!::INSTANCE.isInitialized) {
+            // INSTANCE가 아직 초기화되지 않음
+            INSTANCE = Room.databaseBuilder(
+                context.applicationContext,
+                VideosDatabase::class.java,
+                "videos"
+            ).build()
+        }
+    }
+    return INSTANCE
 }
