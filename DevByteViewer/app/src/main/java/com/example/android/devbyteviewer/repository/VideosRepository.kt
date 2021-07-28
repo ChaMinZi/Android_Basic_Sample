@@ -32,13 +32,14 @@ class VideosRepository(private val database: VideosDatabase) {
      * Database는 databaseVideo를 반환하기 때문에 Transformations를 이용하여 Video로 변환
      * ( Transformations는 activity나 fragment가 값을 호출할 때만 동작하기 때문에 ) videos를 안전한 프로퍼티로 선언할 수 있습니다.
      **/
-    val videos: LiveData<List<Video>> = Transformations.map(database.videoDao.getVideos()) {
-        it.asDomainModel()
-    }
+    val videos: LiveData<List<Video>> =
+        Transformations.map(database.videoDao.getVideos()) {
+            it.asDomainModel()
+        }
 
     // 2. 오프라인 캐시 refresh
     /**
-    * 코루틴에서 호출할 것이므로 suspend로 선언
+     * 코루틴에서 호출할 것이므로 suspend로 선언
      *
      * Android의 데이터베이스는 파일 시스템이나 디스크에 저장됩니다.
      * 데이터를 저장하기 위해서는 파일 권한을 수행해야 합니다?
@@ -63,7 +64,7 @@ class VideosRepository(private val database: VideosDatabase) {
      *
      * [database.videoDao.insertAll(*playlist.asDatabaseModel())]
      * : SOC(관심사 분리)를 유지하기 위해서, asDatabaseModel을 사용하여 network results를 database objects로 매핑해야 합니다.
-    **/
+     **/
     suspend fun refreshVideos() {
         withContext(Dispatchers.IO) {
             val playlist = Network.devbytes.getPlaylist().await()
