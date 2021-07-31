@@ -8,3 +8,9 @@ DevByte Viewer는 [Room](https://developer.android.com/topic/libraries/architect
 
 ## Screenshots
 
+<img src="screenshots/screenshot1.png" height="600px"></img>
+<img src="screenshots/screenshot2.png" height="600px"></img>
+
+## Structure
+
+<img src="screenshots/memo.jpg" height="600px"></img>

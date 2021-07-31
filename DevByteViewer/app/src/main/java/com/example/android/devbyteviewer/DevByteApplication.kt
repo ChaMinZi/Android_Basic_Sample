@@ -31,11 +31,10 @@ class DevByteApplication : Application() {
         delayedInit()
     }
 
-    private fun delayedInit() {
-        applicationScope.launch {
-            setupRecurringWork()
-        }
+    private fun delayedInit() = applicationScope.launch {
+        setupRecurringWork()
     }
+
 
     private fun setupRecurringWork() {
         val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED)
