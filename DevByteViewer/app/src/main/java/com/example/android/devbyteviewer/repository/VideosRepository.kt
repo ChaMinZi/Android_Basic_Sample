@@ -64,11 +64,12 @@ class VideosRepository(private val database: VideosDatabase) {
      *
      * [database.videoDao.insertAll(*playlist.asDatabaseModel())]
      * : SOC(관심사 분리)를 유지하기 위해서, asDatabaseModel을 사용하여 network results를 database objects로 매핑해야 합니다.
+     * 파라미터 앞의 *는 spread operator로 `varargs`가 필요한 함수에 배열을 파라미터로 전달할 때 사용합니다. (참고: https://kotlinlang.org/docs/functions.html#named-arguments)
      **/
     suspend fun refreshVideos() {
         withContext(Dispatchers.IO) {
             val playlist = Network.devbytes.getPlaylist().await()
-            database.videoDao.insertAll(*playlist.asDatabaseModel())
+            database.videoDao.insertAll(*playlist.asDatabaseModel()) // *는 spread operator
         }
     }
 }
