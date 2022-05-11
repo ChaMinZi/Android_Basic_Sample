@@ -1,28 +1,50 @@
 package com.udacity.asteroidradar.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
+    private lateinit var binding: FragmentMainBinding
+
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this).get(MainViewModel::class.java)
+        ViewModelProvider(this)[MainViewModel::class.java]
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val binding = FragmentMainBinding.inflate(inflater)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentMainBinding.inflate(inflater)
         binding.lifecycleOwner = this
-
         binding.viewModel = viewModel
 
         setHasOptionsMenu(true)
 
+        setUpAsteroidRecyclerView()
+
+        viewModel.pictureOfDay.observe(viewLifecycleOwner) { pictureOfDay ->
+        }
+
         return binding.root
+    }
+
+    private fun setUpAsteroidRecyclerView() {
+        val recyclerAdapter = MainAdapter(MainAdapter.AsteroidClickListener { asteroid ->
+            findNavController().navigate(MainFragmentDirections.actionShowDetail(asteroid))
+        })
+        binding.asteroidRecycler.adapter = recyclerAdapter
+
+        // update Recycler View
+        viewModel.asteroidList.observe(viewLifecycleOwner) {
+            recyclerAdapter.submitList(it)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
