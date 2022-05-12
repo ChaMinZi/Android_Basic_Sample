@@ -29,9 +29,6 @@ class MainFragment : Fragment() {
 
         setUpAsteroidRecyclerView()
 
-        viewModel.pictureOfDay.observe(viewLifecycleOwner) { pictureOfDay ->
-        }
-
         return binding.root
     }
 

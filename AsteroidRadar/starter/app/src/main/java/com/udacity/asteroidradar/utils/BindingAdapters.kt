@@ -44,19 +44,23 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
 
 @BindingAdapter("pictureOfDay")
 fun bindPictureOfDay(imageView: ImageView, pictureOfDay: PictureOfDay?) {
-    pictureOfDay?.let { pictureOfDay ->
-        if (pictureOfDay.url.isNotBlank()) {
-            Picasso.with(imageView.context)
-                .load(pictureOfDay.url)
-                .placeholder(R.drawable.placeholder_picture_of_day)
-                .fit()
-                .into(imageView)
-        }
+    val context = imageView.context
+    if (pictureOfDay != null && pictureOfDay.url.isNotBlank()) {
+        Picasso.with(context)
+            .load(pictureOfDay.url)
+            .placeholder(R.drawable.placeholder_picture_of_day)
+            .fit()
+            .into(imageView)
+
         val contentDescription =
             String.format(
-                imageView.context.getString(R.string.nasa_picture_of_day_content_description_format),
+                context.getString(R.string.nasa_picture_of_day_content_description_format),
                 pictureOfDay.title
             )
         imageView.contentDescription = contentDescription
+    } else {
+        imageView.setImageResource(R.drawable.placeholder_picture_of_day)
+        imageView.contentDescription =
+            context.getString(R.string.this_is_nasa_s_picture_of_day_showing_nothing_yet)
     }
 }

@@ -11,8 +11,8 @@ interface AsteroidDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAsteroidList(vararg asteroids: AsteroidEntity)
 
-    @Query("SELECT * FROM AsteroidEntity ORDER BY closeApproachDate")
-    fun getAllAsteroid(): Flow<List<Asteroid>>
+    @Query("SELECT * FROM AsteroidEntity WHERE closeApproachDate >= :targetDate ORDER BY closeApproachDate")
+    fun getAllAsteroid(targetDate: String): Flow<List<Asteroid>>
 }
 
 @Database(entities = [AsteroidEntity::class], version = 1)
