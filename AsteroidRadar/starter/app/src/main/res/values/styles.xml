@@ -6,6 +6,22 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="TitleTextStyle" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="ContentTextStyle" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+    </style>
 </resources>

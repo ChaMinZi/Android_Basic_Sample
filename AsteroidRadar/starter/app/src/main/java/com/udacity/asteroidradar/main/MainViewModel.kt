@@ -3,22 +3,22 @@ package com.udacity.asteroidradar.main
 import android.app.Application
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.api.Network
-import com.udacity.asteroidradar.database.AsteroidDao_Impl
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.models.Asteroid
-import com.udacity.asteroidradar.models.AsteroidEntity
 import com.udacity.asteroidradar.models.PictureOfDay
 import com.udacity.asteroidradar.repositories.MainRepository
 import com.udacity.asteroidradar.utils.Constants
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val dataBase = getDatabase(application)
-    private val repository = MainRepository(dataBase)
+    private val database = getDatabase(application)
+    private val repository = MainRepository(database)
 
-    private var _asteroidList = repository.asteroidList.asLiveData()
+    private var _asteroidList =
+        repository.asteroidList.asLiveData() as MutableLiveData<List<Asteroid>>
     val asteroidList get() = _asteroidList
 
     private var _pictureOfDay = MutableLiveData<PictureOfDay?>()
@@ -27,10 +27,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         viewModelScope.launch {
-//            repository.updateAsteroid(
-//                Constants.getToday(),
-//                Constants.getAfter7Days()
-//            )
+            repository.updateAsteroid(
+                Constants.getToday(),
+                Constants.getAfter7Days()
+            )
             getPictureOfDay()
         }
     }
@@ -38,9 +38,36 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private suspend fun getPictureOfDay() {
         try {
             val response = Network.nasa.getPictureOfDay()
-            _pictureOfDay.postValue(response)
+            if (response.isSuccessful)
+                _pictureOfDay.postValue(response.body())
+            else
+                _pictureOfDay.postValue(null)
         } catch (e: Exception) {
             _pictureOfDay.postValue(null)
+        }
+    }
+
+    fun getWeekAsteroid() {
+        viewModelScope.launch {
+            repository.getWeekAsteroid().collectLatest {
+                _asteroidList.postValue(it)
+            }
+        }
+    }
+
+    fun getTodayAsteroid() {
+        viewModelScope.launch {
+            repository.getTodayAsteroid().collectLatest {
+                _asteroidList.postValue(it)
+            }
+        }
+    }
+
+    fun getSavedAsteroid() {
+        viewModelScope.launch {
+            repository.getSavedAsteroid().collectLatest {
+                _asteroidList.postValue(it)
+            }
         }
     }
 }
