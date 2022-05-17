@@ -25,6 +25,7 @@ class MainFragment : Fragment() {
         binding.viewModel = viewModel
 
         setHasOptionsMenu(true)
+        binding.statusLoadingWheel.progress = 30
 
         setUpAsteroidRecyclerView()
 
@@ -39,6 +40,9 @@ class MainFragment : Fragment() {
 
         // update Recycler View
         viewModel.asteroidList.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty())
+                binding.statusLoadingWheel.visibility = View.GONE
+
             recyclerAdapter.submitList(it)
         }
     }

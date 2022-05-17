@@ -9,6 +9,7 @@ import com.udacity.asteroidradar.models.asDomainModel
 import com.udacity.asteroidradar.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
@@ -18,7 +19,9 @@ class MainRepository(private val database: NasaDatabase) {
         get() = database.asteroidDao.getAsteroidList(
             Constants.getToday(),
             Constants.getAfter7Days()
-        )
+        ).map { list ->
+            list.sortedBy { it.closeApproachDate }
+        }
 
     suspend fun updateAsteroid(startDate: String, endDate: String) {
         withContext(Dispatchers.IO) {
